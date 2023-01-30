@@ -29,7 +29,7 @@ SPECTRUM=n
 
 HMP=n
 
-NAMA=Signature
+NAMA=pyxis
 
 JENIS=IV
 
