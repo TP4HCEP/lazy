@@ -29,11 +29,11 @@ SPECTRUM=n
 
 HMP=n
 
-NAMA=Signature
+NAMA=RevengeOS
 
-JENIS=IV
+JENIS=dtbo
 
-VARIAN=r3
+VARIAN=clangxgcc
 
 # Build Type
 BUILD_TYPE="nh"
