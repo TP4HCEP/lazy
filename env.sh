@@ -27,20 +27,20 @@ SPECTRUM=n
 
 # Kernel Variant
 
-HMP=n
+HMP=1
 
-NAMA=pyxis-gcc
+NAMA=pyxis
 
 JENIS=IV
 
-VARIAN=r3
+VARIAN=gcc49
 
 # Build Type
 BUILD_TYPE="nh"
 
 # Specify compiler.
 # 'clang' or 'clangxgcc' or 'gcc' or 'gcc49' , 'linaro & 'gcc2', clang2
-COMPILER="gcc"
+COMPILER="gcc49"
 
 # Message on anykernel when installatio
 MESSAGE="just flash and forget"
