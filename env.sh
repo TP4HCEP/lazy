@@ -29,18 +29,18 @@ SPECTRUM=n
 
 HMP=1
 
-NAMA=pyxis
+NAMA=RevengeOS
 
-JENIS=IV
+JENIS=dtbo
 
-VARIAN=gcc49
+VARIAN=gcc
 
 # Build Type
 BUILD_TYPE="nh"
 
 # Specify compiler.
 # 'clang' or 'clangxgcc' or 'gcc' or 'gcc49' , 'linaro & 'gcc2', clang2
-COMPILER="gcc49"
+COMPILER="gcc"
 
 # Message on anykernel when installatio
 MESSAGE="just flash and forget"
