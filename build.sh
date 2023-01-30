@@ -1,4 +1,4 @@
-#!/bin/bash
+# !/bin/bash
 # shellcheck disable=SC2154
 #
 
@@ -59,7 +59,7 @@ FILES=Image.gz-dtb
 
 # Build dtbo.img (select this only if your source has support to building dtbo.img)
 # 1 is YES | 0 is NO(default)
-BUILD_DTBO=0
+BUILD_DTBO=1
 
 # Sign the zipfile
 # 1 is YES | 0 is NO
@@ -435,7 +435,13 @@ build_kernel() {
 gen_zip() {
 	msg "|| Zipping into a flashable zip ||"
 	mv "$KERNEL_DIR"/out/arch/arm64/boot/Image.gz-dtb AnyKernel3/Image.gz-dtb
-
+	mv "$KERNEL_DIR"/out/arch/arm64/boot/dts/qcom/sdm710.dtb AnyKernel3/sdm710.dtb
+	mv "$KERNEL_DIR"/out/arch/arm64/boot/dts/qcom/pyxis-sdm710-overlay.dtbo AnyKernel3/pyxis-sdm710-overlay.dtbo
+	mv "$KERNEL_DIR"/out/arch/arm64/boot/Image.gz AnyKernel3/Image.gz
+	mv "$KERNEL_DIR"/out/certs/signing_key.pem AnyKernel3/signing_key.pem
+	mv "$KERNEL_DIR"/out/certs/verity.x509.pem AnyKernel3/verity.x509.pem
+	
+	
 #	msg "|| Zipping kernel modules ..||"
 
 #	cp -rLf * AnyKernel3/modules/;
@@ -446,7 +452,7 @@ gen_zip() {
 
 
 
-	# tambahkan changelogs
+# tambahkan changelogs
 	if [ $CHANGELOGS = "y" ]
 	then
 		mv "$KERNEL_DIR"/changelogs AnyKernel3/changelogs
@@ -460,8 +466,7 @@ gen_zip() {
            else
               cp -af  "$KERNEL_DIR"/spectrum/eas AnyKernel3/spectrum/init.spectrum.rc
            fi
-    fi
-
+	fi
 	if [ $BUILD_DTBO = 1 ]
 	then
 		mv "$KERNEL_DIR"/out/arch/arm64/boot/dtbo.img AnyKernel3/dtbo.img
