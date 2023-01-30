@@ -33,14 +33,14 @@ NAMA=pyxis
 
 JENIS=IV
 
-VARIAN=r3
+VARIAN=clang_
 
 # Build Type
 BUILD_TYPE="nh"
 
 # Specify compiler.
 # 'clang' or 'clangxgcc' or 'gcc' or 'gcc49' , 'linaro & 'gcc2', clang2
-COMPILER="gcc2"
+COMPILER="clang"
 
 # Message on anykernel when installatio
 MESSAGE="just flash and forget"
