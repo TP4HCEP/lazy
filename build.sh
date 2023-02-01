@@ -438,6 +438,9 @@ gen_zip() {
 	mv "$KERNEL_DIR"/out/arch/arm64/boot/dts/qcom/sdm710.dtb AnyKernel3/sdm710.dtb
 	mv "$KERNEL_DIR"/out/arch/arm64/boot/dts/qcom/pyxis-sdm710-overlay.dtbo AnyKernel3/pyxis-sdm710-overlay.dtbo
 	mv "$KERNEL_DIR"/out/arch/arm64/boot/Image.gz AnyKernel3/Image.gz
+	find "$KERNEL_DIR"/out/extra_tools/drivers -type f -iname '*.ko' -exec cp {} AnyKernel3/modules/system/lib/modules/ \;
+	
+	
 #	mv "$KERNEL_DIR"/out/certs/signing_key.pem AnyKernel3/signing_key.pem
 #	mv "$KERNEL_DIR"/out/certs/verity.x509.pem AnyKernel3/verity.x509.pem
 	
