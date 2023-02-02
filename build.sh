@@ -159,11 +159,11 @@ DATE2=$(TZ=Asia/Jakarta date +"%Y%m%d")
 	    if [ $HMP = "y" ]
 	    then
 	       msg "|| Cloning Anykerne For HMP ||"
-           git clone https://github.com/fajar4561/Anykernel.git -b master AnyKernel3
+           git clone https://github.com/TP4HCEP/Anykernel3.git -b master AnyKernel3
         elif [ $HMP = "n" ]
         then
            msg "|| Cloning Anykerne For EAS ||"
-           git clone https://github.com/fajar4561/Anykernel.git -b eas AnyKernel3
+           git clone https://github.com/TP4HCEP/Anykernel3.git -b master AnyKernel3
         fi
 
 	if [ $BUILD_DTBO = 1 ]
@@ -193,8 +193,8 @@ setversioning() {
 
 exports() {
 	export KBUILD_BUILD_USER=$K_USER
-    export KBUILD_BUILD_HOST=$K_HOST
-    export KBUILD_BUILD_VERSION=$K_VERSION
+    	export KBUILD_BUILD_HOST=$K_HOST
+    	export KBUILD_BUILD_VERSION=$K_VERSION
 	export ARCH=$K_ARCH
 	export SUBARCH=$K_SUBARCH
 
@@ -475,18 +475,18 @@ gen_zip() {
 		mv "$KERNEL_DIR"/out/arch/arm64/boot/dtbo.img AnyKernel3/dtbo.img
 	fi
 	cd AnyKernel3 || exit
-        cp -af anykernel-real.sh anykernel.sh
+#        cp -af anykernel-real.sh anykernel.sh
 
-	sed -i "s/kernel.string=.*/kernel.string=$NAMA-$VARIAN/g" anykernel.sh
-	sed -i "s/kernel.for=.*/kernel.for=$JENIS/g" anykernel.sh
-	sed -i "s/kernel.compiler=.*/kernel.compiler=$KBUILD_COMPILER_STRING/g" anykernel.sh
-	sed -i "s/kernel.made=.*/kernel.made=$KBUILD_BUILD_USER@$KBUILD_BUILD_HOST/g" anykernel.sh
-	sed -i "s/kernel.version=.*/kernel.version=$LINUXVER/g" anykernel.sh
-	sed -i "s/message.word=.*/message.word=$MESSAGE/g" anykernel.sh
-	sed -i "s/build.date=.*/build.date=$DATE2/g" anykernel.sh
+#	sed -i "s/kernel.string=.*/kernel.string=$NAMA-$VARIAN/g" anykernel.sh
+#	sed -i "s/kernel.for=.*/kernel.for=$JENIS/g" anykernel.sh
+#	sed -i "s/kernel.compiler=.*/kernel.compiler=$KBUILD_COMPILER_STRING/g" anykernel.sh
+#	sed -i "s/kernel.made=.*/kernel.made=$KBUILD_BUILD_USER@$KBUILD_BUILD_HOST/g" anykernel.sh
+#	sed -i "s/kernel.version=.*/kernel.version=$LINUXVER/g" anykernel.sh
+#	sed -i "s/message.word=.*/message.word=$MESSAGE/g" anykernel.sh
+#	sed -i "s/build.date=.*/build.date=$DATE2/g" anykernel.sh
 
 
-	zip -r9 "$ZIPNAME" * -x .git README.md anykernel-real.sh .gitignore zipsigner* *.zip
+	zip -r9 "$ZIPNAME" * -x .git README.md .gitignore zipsigner* *.zip
 
 	## Prepare a final zip variable
 	ZIP_FINAL="$ZIPNAME"
