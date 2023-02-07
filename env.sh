@@ -4,7 +4,7 @@
 KERNEL_REPO=https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/TP4HCEP/los
 
 # Kernel Branch
-KERNEL_BRANCH=20
+KERNEL_BRANCH=19
 
 # The name of the device for which the kernel is built
 MODEL="pyxis"
@@ -33,14 +33,14 @@ NAMA=los
 
 JENIS=dtbo-20
 
-VARIAN=linaro
+VARIAN=clang2
 
 # Build Type
 BUILD_TYPE="nh"
 
 # Specify compiler.
 # 'clang' or 'clangxgcc' or 'gcc' or 'gcc49' , 'linaro & 'gcc2', clang2
-COMPILER="clangxgcc"
+COMPILER="clang2"
 
 # Message on anykernel when installatio
 MESSAGE="just flash and forget"
