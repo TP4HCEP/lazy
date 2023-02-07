@@ -343,7 +343,7 @@ build_kernel() {
 
 	if [ $COMPILER = "clang" ]
 	then
-		make -j"$PROCS" O=out \
+		make -j"$PROCS" -i O=out \
 		CC=clang \
 		CROSS_COMPILE=aarch64-linux-gnu- \
 	    CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
@@ -356,7 +356,7 @@ build_kernel() {
 		 "${MAKE[@]}" 2>&1 | tee build.log
 	elif [ $COMPILER = "clang2" ]
 	then
-	   make -j"$PROCS" O=out \
+	   make -j"$PROCS" -i O=out \
 	   CC=clang \
 	   CROSS_COMPILE_ARM32=arm-linux-androideabi- \
 	   CROSS_COMPILE=aarch64-linux-android- \
@@ -366,25 +366,25 @@ build_kernel() {
 	   "${MAKE[@]}" 2>&1 | tee build.log
 	elif [ $COMPILER = "gcc49" ]
 	then
-		make -j"$PROCS" O=out \
+		make -j"$PROCS" -i O=out \
 				CROSS_COMPILE_ARM32=arm-linux-androideabi- \
 				CROSS_COMPILE=aarch64-linux-android- \
 				"${MAKE[@]}" 2>&1 | tee build.log
 	elif [ $COMPILER = "gcc2" ]
 	then
-		make -j"$PROCS" O=out \
+		make -j"$PROCS" -i O=out \
 				CROSS_COMPILE=aarch64-linux-gnu- \
 				CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
 				"${MAKE[@]}" 2>&1 | tee build.log
 	elif [ $COMPILER = "linaro" ]
 	then
-		make -j"$PROCS" O=out \
+		make -j"$PROCS" -i O=out \
 				CROSS_COMPILE=aarch64-linux-gnu- \
 				CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
 				"${MAKE[@]}" 2>&1 | tee build.log
 	elif [ $COMPILER = "gcc" ]
 	then
-		make -j"$PROCS" O=out \
+		make -j"$PROCS" -i O=out \
 				CROSS_COMPILE_ARM32=arm-eabi- \
 				CROSS_COMPILE=aarch64-elf- \
 				AR=aarch64-elf-ar \
@@ -394,7 +394,7 @@ build_kernel() {
 				"${MAKE[@]}" 2>&1 | tee build.log
 	elif [ $COMPILER = "clangxgcc" ]
 	then
-		make -j"$PROCS"  O=out \
+		make -j"$PROCS" -i O=out \
 					CC=clang \
 					CROSS_COMPILE=aarch64-linux-gnu- \
 					CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
