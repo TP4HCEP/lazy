@@ -1,10 +1,10 @@
 #! /bin/bash
 
 # Kernel Repo
-KERNEL_REPO=https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/TP4HCEP/RevengeOS
+KERNEL_REPO=https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/TP4HCEP/los
 
 # Kernel Branch
-KERNEL_BRANCH=r11.0
+KERNEL_BRANCH=20
 
 # The name of the device for which the kernel is built
 MODEL="pyxis"
@@ -29,18 +29,18 @@ SPECTRUM=n
 
 HMP=n
 
-NAMA=RevengeOS
+NAMA=los
 
-JENIS=dtbo
+JENIS=dtbo-20
 
-VARIAN=clangxgcc
+VARIAN=linaro
 
 # Build Type
 BUILD_TYPE="nh"
 
 # Specify compiler.
 # 'clang' or 'clangxgcc' or 'gcc' or 'gcc49' , 'linaro & 'gcc2', clang2
-COMPILER="gcc49"
+COMPILER="linaro"
 
 # Message on anykernel when installatio
 MESSAGE="just flash and forget"
