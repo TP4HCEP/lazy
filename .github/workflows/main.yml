@@ -3,11 +3,12 @@ name: pyxis kernel builder
 on:
   push:
   workflow_dispatch:
+env:
 jobs:
  super-job:
   runs-on: ubuntu-20.04
   strategy:
-      matrix:
+      matrix: 
           compiler:
             - cc: gcc
             - cc: gcc2
@@ -16,18 +17,18 @@ jobs:
             - cc: clang
             - cc: clang2
             - cc: clangxgcc
-            steps:
+      steps:
           uses: actions/checkout@v2
           name: Setup
-        run: |
+      run: |
           sudo apt-get update && sudo apt-get upgrade -y
           sudo apt-get install -y flex bison ncurses-dev texinfo gcc gperf patch libtool automake g++ libncurses5-dev gawk subversion expat libexpat1-dev python-all-dev python3-all-dev binutils-dev bc libcap-dev autoconf libgmp-dev build-essential pkg-config libmpc-dev libmpfr-dev autopoint gettext txt2man liblzma-dev libssl-dev libz-dev mercurial wget tar gcc-10 g++-10 cmake zstd ninja-build lz4 liblz4-tool liblz4-dev lzma --fix-broken --fix-missing
-      - name: Set build date
-        id: get-date
-        run: |
+      name: Set build date
+      id: get-date
+        run:  |
           sudo timedatectl set-timezone Asia/Jakarta
           echo ::set-output name=date::$(/bin/date -u "+%Y%m%d")
-      - name: Build & Push
+        name: Build & Push
         run: |
           git config --global user.name "${GITHUB_USER}"
           git config --global user.email "${GITHUB_EMAIL}"
