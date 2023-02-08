@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 # Kernel Repo
 KERNEL_REPO=https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/TP4HCEP/los
@@ -31,16 +31,16 @@ HMP=n
 
 NAMA=los
 
-JENIS=dtbo-20
+JENIS=20
 
-VARIAN=clang2
+VARIAN=clang
 
 # Build Type
 BUILD_TYPE="nh"
 
 # Specify compiler.
 # 'clang' or 'clangxgcc' or 'gcc' or 'gcc49' , 'linaro & 'gcc2', clang2
-COMPILER="gcc2"
+COMPILER="clangxgcc"
 
 # Message on anykernel when installatio
 MESSAGE="just flash and forget"
