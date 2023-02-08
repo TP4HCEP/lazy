@@ -6,6 +6,17 @@ on:
 jobs:
   super-job:
       runs-on: ubuntu-20.04
+        matrix:
+          compiler:
+          - cc: gcc
+          - cc: gcc2
+          - cc: gcc49
+          - cc: linaro
+          - cc: clang
+          - cc: clang2
+          - cc: clangxgcc
+#          - cc:  clang-10
+#            cxx: clang++-10      
       steps:
       - uses: actions/checkout@v2
       - name: Setup
@@ -27,6 +38,7 @@ jobs:
           mv /home/runner/work/lazy/lazy/build.sh /home/runner/work/lazy/lazy/kernel
           source build.sh
         env:
+          COMPILER:  ${{ matrix.compiler.cc }}
           GITHUB_EMAIL: ${{ secrets.EMAIL }}
           GITHUB_TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
           GITHUB_USER: ${{ secrets.USERNAME }}
