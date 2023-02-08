@@ -3,20 +3,24 @@ on:
   workflow_dispatch:
 push:
 jobs:
- super-job:
+  sonarcloud:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        # Disabling shallow clone is recommended for improving relevancy of reporting
+        fetch-depth: 0
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+super-job:
   runs-on: ubuntu-20.04
   strategy:
   fail-fast: false
-	matrix: 
-        compiler:
-        - cc: gcc
-        - cc: gcc2
-        - cc: gcc49
-        - cc: linaro
-        - cc: clang
-        - cc: clang2
-        - cc: clangxgcc
-				
+	matrix:
+      	compiler [ gcc,gcc2,gcc49,linaro,clang,clang2,clangxgcc ]
 	steps:
   - uses: actions/checkout@v2
   -	name: Setup
@@ -28,7 +32,7 @@ jobs:
             run: |
             sudo timedatectl set-timezone Asia/Jakarta
             echo ::set-output name=date::$(/bin/date -u "+%Y%m%d");
-	
+
         name: "Build & Push"
             run: |
           git config --global user.name "${GITHUB_USER}"
