@@ -25,7 +25,7 @@ jobs:
           sudo apt-get install -y flex bison ncurses-dev texinfo gcc gperf patch libtool automake g++ libncurses5-dev gawk subversion expat libexpat1-dev python-all-dev python3-all-dev binutils-dev bc libcap-dev autoconf libgmp-dev build-essential pkg-config libmpc-dev libmpfr-dev autopoint gettext txt2man liblzma-dev libssl-dev libz-dev mercurial wget tar gcc-10 g++-10 cmake zstd ninja-build lz4 liblz4-tool liblz4-dev lzma --fix-broken --fix-missing
       name: Set build date
       id: get-date
-        run:  |
+      run: |
           sudo timedatectl set-timezone Asia/Jakarta
           echo ::set-output name=date::$(/bin/date -u "+%Y%m%d")
         name: Build & Push
