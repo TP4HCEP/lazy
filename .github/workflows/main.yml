@@ -1,5 +1,6 @@
-name: pyxis kernel builder
+
 on:
+name: pyxis kernel builder
   workflow_dispatch:
 push:
 jobs:
