@@ -4,7 +4,7 @@
 KERNEL_REPO=https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/TP4HCEP/los
 
 # Kernel Branch
-KERNEL_BRANCH=20
+KERNEL_BRANCH=19
 
 # The name of the device for which the kernel is built
 MODEL="pyxis"
