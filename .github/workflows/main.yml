@@ -1,12 +1,12 @@
 name: pyxis kernel builder
 
-on:
-  push:
-  workflow_dispatch:
-env:
-  strategy:
-    matrix: 
-      compiler:
+  on:
+    push:
+    workflow_dispatch:
+    env:
+      strategy:
+        matrix: 
+        compiler:
         - cc: gcc
         - cc: gcc2
         - cc: gcc49
