@@ -436,7 +436,7 @@ gen_zip() {
 	msg "|| Zipping into a flashable zip ||"
 	mv "$KERNEL_DIR"/out/arch/arm64/boot/Image.gz-dtb AnyKernel3/Image.gz-dtb
 	mv "$KERNEL_DIR"/out/arch/arm64/boot/dts/qcom/sdm710.dtb AnyKernel3/sdm710.dtb
-	mv "$KERNEL_DIR"/out/arch/arm64/boot/dts/qcom/pyxis-sdm710-overlay.dtbo AnyKernel3/pyxis-sdm710-overlay.dtbo
+#	mv "$KERNEL_DIR"/out/arch/arm64/boot/dts/qcom/pyxis-sdm710-overlay.dtbo AnyKernel3/pyxis-sdm710-overlay.dtbo
 	mv "$KERNEL_DIR"/out/arch/arm64/boot/Image.gz AnyKernel3/Image.gz
 	find "$KERNEL_DIR"/out/extra_tools/drivers -type f -iname '*.ko' -exec cp {} AnyKernel3/modules/system/lib/modules/ \;
 	find "$KERNEL_DIR"/out/drivers -type f -iname '*.ko' -exec cp {} AnyKernel3/modules/system/lib/modules/ \;
