@@ -378,7 +378,7 @@ build_kernel() {
 				"${MAKE[@]}" 2>&1 | tee build.log
 	elif [ $COMPILER = "linaro" ]
 	then
-		make -j"$PROCS" O=out \
+		make all -V=1 -j"$PROCS" -i O=out \
 				CROSS_COMPILE=aarch64-linux-gnu- \
 				CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
 				"${MAKE[@]}" 2>&1 | tee build.log
