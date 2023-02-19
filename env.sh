@@ -4,7 +4,7 @@
 KERNEL_REPO=https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/TP4HCEP/RevengeOS
 
 # Kernel Branch
-KERNEL_BRANCH=r11.0
+KERNEL_BRANCH=pyxis
 
 # The name of the device for which the kernel is built
 MODEL="pyxis"
@@ -14,7 +14,7 @@ DEVICE="pyxis"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=pyxis_defconfig
+DEFCONFIG=pyx_lastgood_defconfig
 
 # Show manufacturer info
 MANUFACTURERINFO="Xiaomi"
