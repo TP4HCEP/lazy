@@ -314,9 +314,9 @@ build_kernel() {
 		make clean && make mrproper && rm -rf out
 	fi
 
-	if [ $SILENCE = "0" ]
+	if [ $SILENCE = "1" ]
 	then
-		MAKE+=( V=1 )
+		MAKE+=( -S )
 	fi
 
 	if [ $EXTRA_TOOLS_ENABLE = "1" ]
@@ -420,12 +420,12 @@ build_kernel() {
 				python2 "$KERNEL_DIR/scripts/ufdt/libufdt/utils/src/mkdtboimg.py" \
 					create "$KERNEL_DIR/out/arch/arm64/boot/dtbo.img" --page_size=4096 "$KERNEL_DIR/out/arch/arm64/boot/dts/$DTBO_PATH"
 			fi
-			export KERNELDIR=$KERNEL_DIR
-			cd "$KERNEL_DIR"/tools/usb/usbip; bash autogen.sh; bash configure; make V=1 \
-				CROSS_COMPILE=aarch64-linux-gnu- \
-				CROSS_COMPILE_ARM32=arm-linux-gnueabi-
+#			 export KERNELDIR=$KERNEL_DIR
+#			cd "$KERNEL_DIR"/tools/usb/usbip; bash autogen.sh; bash configure; make V=1 \
+#			CROSS_COMPILE=aarch64-linux-gnu- \
+#			CROSS_COMPILE_ARM32=arm-linux-gnueabi-
 
-			zip -r9 "$KERNEL_DIR"/AnyKernel3/usbip.zip * 
+#			zip -r9 "$KERNEL_DIR"/AnyKernel3/usbip.zip * 
 
 				
 				gen_zip
