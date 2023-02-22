@@ -162,8 +162,7 @@ DATE2=$(TZ=Asia/Jakarta date +"%Y%m%d")
            git clone https://github.com/TP4HCEP/Anykernel3.git -b master AnyKernel3
         elif [ $HMP = "n" ]
         then
-           msg "|| Cloning Anykerne For EAS ||"s/src/mkdtboimg.py" \
-					create "$KERNEL_DIR/out/arch/arm64/boot/dt
+           msg "|| Cloning Anykerne For EAS ||"
            git clone https://github.com/TP4HCEP/Anykernel3.git -b master AnyKernel3
         fi
 
