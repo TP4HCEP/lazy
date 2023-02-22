@@ -1,10 +1,8 @@
 #! /bin/bash
-
-# Kernel Repo
-KERNEL_REPO=https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/TP4HCEP/RevengeOS
+KERNEL_REPO=https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/TP4HCEP/tkilla
 
 # Kernel Branch
-KERNEL_BRANCH=r11.0
+KERNEL_BRANCH=test
 
 # The name of the device for which the kernel is built
 MODEL="pyxis"
