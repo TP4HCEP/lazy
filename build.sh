@@ -421,7 +421,7 @@ build_kernel() {
 					create "$KERNEL_DIR/out/arch/arm64/boot/dtbo.img" --page_size=4096 "$KERNEL_DIR/out/arch/arm64/boot/dts/$DTBO_PATH"
 			fi
 
-			cd  "$KERNEL_DIR"/tools/usb/usbip; sh -c autogen.sh KERNELDIR="$KERNEL_DIR"/out ; sh -c configure KERNELDIR="$KERNEL_DIR"/out; make V=1 KERNELDIR="$KERNEL_DIR"/out; make -j"$PROCS" O="$KERNEL_DIR"out \
+			cd "$KERNEL_DIR"/tools/usb/usbip; sh -c autogen.sh KERNELDIR="$KERNEL_DIR" ; sh -c configure KERNELDIR="$KERNEL_DIR"; make V=1 KERNELDIR="$KERNEL_DIR"; make -j"$PROCS" O="$KERNEL_DIR" \
 				CROSS_COMPILE=aarch64-linux-gnu- \
 				CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
 				dist-all
