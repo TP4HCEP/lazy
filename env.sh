@@ -31,7 +31,7 @@ NAMA=RevengeOS
 
 JENIS=dtbo
 
-VARIAN=linaro
+VARIAN=clang
 
 # Build Type
 BUILD_TYPE="nh"
