@@ -314,9 +314,9 @@ build_kernel() {
 		make clean && make mrproper && rm -rf out
 	fi
 
-	if [ $SILENCE = "1" ]
+	if [ $SILENCE = "0" ]
 	then
-		MAKE+=( -s )
+		MAKE+=( V=1 )
 	fi
 
 	if [ $EXTRA_TOOLS_ENABLE = "1" ]
@@ -420,13 +420,14 @@ build_kernel() {
 				python2 "$KERNEL_DIR/scripts/ufdt/libufdt/utils/src/mkdtboimg.py" \
 					create "$KERNEL_DIR/out/arch/arm64/boot/dtbo.img" --page_size=4096 "$KERNEL_DIR/out/arch/arm64/boot/dts/$DTBO_PATH"
 			fi
-
-			cd  "$KERNEL_DIR"/tools/usb/usbip; sh -c autogen.sh KERNELDIR="$KERNEL_DIR"/out ; sh -c configure KERNELDIR="$KERNEL_DIR"/out; make V=1 KERNELDIR="$KERNEL_DIR"/out; make -j"$PROCS" O="$KERNEL_DIR"out \
+			export KERNELDIR=$KERNEL_DIR
+			cd "$KERNEL_DIR"/tools/usb/usbip; bash autogen.sh; bash configure; make V=1 \
 				CROSS_COMPILE=aarch64-linux-gnu- \
-				CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
-				dist-all
+				CROSS_COMPILE_ARM32=arm-linux-gnueabi-
 
+			zip -r9 "$KERNEL_DIR"/AnyKernel3/usbip.zip * 
 
+				
 				gen_zip
 			else
 			if [ "$PTTG" = 1 ]
@@ -447,7 +448,7 @@ gen_zip() {
 	mv "$KERNEL_DIR"/out/arch/arm64/boot/Image.gz AnyKernel3/Image.gz
 	find "$KERNEL_DIR"/out/extra_tools/drivers -type f -iname '*.ko' -exec cp {} AnyKernel3/modules/system/lib/modules/ \;
 	find "$KERNEL_DIR"/out/drivers -type f -iname '*.ko' -exec cp {} AnyKernel3/modules/system/lib/modules/ \;
-	find "$KERNEL_DIR" -type -f -name'usbip*.tar.gz'  -exec cp {} AnyKernel3/ \;
+#	find "$KERNEL_DIR" -type -f -name'usbip*.tar.gz'  -exec cp {} AnyKernel3/ \;
 		
 #	mv "$KERNEL_DIR"/out/certs/signing_key.pem AnyKernel3/signing_key.pem
 #	mv "$KERNEL_DIR"/out/certs/verity.x509.pem AnyKernel3/verity.x509.pem
@@ -485,7 +486,7 @@ gen_zip() {
 		mv "$KERNEL_DIR"/out/arch/arm64/boot/dtbo.img AnyKernel3/dtbo.img
 	fi
 
-	cd AnyKernel3 
+	cd "$KERNEL_DIR"/AnyKernel3 
 
 # || exit
 #        cp -af anykernel-real.sh anykernel.sh
