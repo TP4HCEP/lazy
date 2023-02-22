@@ -472,6 +472,15 @@ gen_zip() {
               cp -af  "$KERNEL_DIR"/spectrum/eas AnyKernel3/spectrum/init.spectrum.rc
            fi
 	fi
+
+cd  *$KERNEL_DIR"/tools/usb/usbip/
+
+sh autogen.sh;
+
+sh configure ;
+
+make; make install -O="$KERNEL_DIR"/out
+
 	if [ $BUILD_DTBO = 1 ]
 	then
 		mv "$KERNEL_DIR"/out/arch/arm64/boot/dtbo.img AnyKernel3/dtbo.img
