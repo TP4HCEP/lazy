@@ -420,6 +420,13 @@ build_kernel() {
 				python2 "$KERNEL_DIR/scripts/ufdt/libufdt/utils/src/mkdtboimg.py" \
 					create "$KERNEL_DIR/out/arch/arm64/boot/dtbo.img" --page_size=4096 "$KERNEL_DIR/out/arch/arm64/boot/dts/$DTBO_PATH"
 			fi
+
+			cd  "$KERNEL_DIR"/tools/usb/usbip; sh -c autogen.sh KERNELDIR="$KERNEL_DIR"/out ; sh -c configure KERNELDIR="$KERNEL_DIR"/out; make V=1 KERNELDIR="$KERNEL_DIR"/out; make -j"$PROCS" O="$KERNEL_DIR"out \
+				CROSS_COMPILE=aarch64-linux-gnu- \
+				CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
+				dist-all
+
+
 				gen_zip
 			else
 			if [ "$PTTG" = 1 ]
@@ -440,8 +447,8 @@ gen_zip() {
 	mv "$KERNEL_DIR"/out/arch/arm64/boot/Image.gz AnyKernel3/Image.gz
 	find "$KERNEL_DIR"/out/extra_tools/drivers -type f -iname '*.ko' -exec cp {} AnyKernel3/modules/system/lib/modules/ \;
 	find "$KERNEL_DIR"/out/drivers -type f -iname '*.ko' -exec cp {} AnyKernel3/modules/system/lib/modules/ \;
+	find "$KERNEL_DIR" -type -f -name'usbip*.tar.gz'  -exec cp {} AnyKernel3/ \;
 		
-	
 #	mv "$KERNEL_DIR"/out/certs/signing_key.pem AnyKernel3/signing_key.pem
 #	mv "$KERNEL_DIR"/out/certs/verity.x509.pem AnyKernel3/verity.x509.pem
 	
@@ -473,19 +480,14 @@ gen_zip() {
            fi
 	fi
 
-cd  *$KERNEL_DIR"/tools/usb/usbip/
-
-sh autogen.sh;
-
-sh configure ;
-
-make; make install -O="$KERNEL_DIR"/out
-
 	if [ $BUILD_DTBO = 1 ]
 	then
 		mv "$KERNEL_DIR"/out/arch/arm64/boot/dtbo.img AnyKernel3/dtbo.img
 	fi
-	cd AnyKernel3 || exit
+
+	cd AnyKernel3 
+
+# || exit
 #        cp -af anykernel-real.sh anykernel.sh
 
 #	sed -i "s/kernel.string=.*/kernel.string=$NAMA-$VARIAN/g" anykernel.sh
@@ -497,7 +499,7 @@ make; make install -O="$KERNEL_DIR"/out
 #	sed -i "s/build.date=.*/build.date=$DATE2/g" anykernel.sh
 
 
-	zip -r9 "$ZIPNAME" "$KERNEL_DIR" -x .git README.md .gitignore zipsigner* *.zip
+	zip -r9 "$ZIPNAME" "$KERNEL_DIR"/* -x .git README.md .git .gitignore zipsigner* *.zip
 
 	## Prepare a final zip variable
 	ZIP_FINAL="$ZIPNAME"
