@@ -421,12 +421,12 @@ build_kernel() {
 					create "$KERNEL_DIR/out/arch/arm64/boot/dtbo.img" --page_size=4096 "$KERNEL_DIR/out/arch/arm64/boot/dts/$DTBO_PATH"
 			fi
 
-			cd "$KERNEL_DIR"/tools/usb/usbip; sh -c autogen.sh KERNELDIR="$KERNEL_DIR" ; sh -c configure KERNELDIR="$KERNEL_DIR"; make V=1 KERNELDIR="$KERNEL_DIR"; make -j"$PROCS" O="$KERNEL_DIR" \
-				CROSS_COMPILE=aarch64-linux-gnu- \
-				CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
-				dist-all
-
-
+#			cd "$KERNEL_DIR"/tools/usb/usbip; sh -c autogen.sh KERNELDIR="$KERNEL_DIR" ; sh -c configure KERNELDIR="$KERNEL_DIR"; make V=1 KERNELDIR="$KERNEL_DIR"; make -j"$PROCS" O="$KERNEL_DIR" \
+#				CROSS_COMPILE=aarch64-linux-gnu- \
+#				CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
+#				dist-all
+#
+#
 				gen_zip
 			else
 			if [ "$PTTG" = 1 ]
@@ -447,7 +447,7 @@ gen_zip() {
 	mv "$KERNEL_DIR"/out/arch/arm64/boot/Image.gz AnyKernel3/Image.gz
 	find "$KERNEL_DIR"/out/extra_tools/drivers -type f -iname '*.ko' -exec cp {} AnyKernel3/modules/system/lib/modules/ \;
 	find "$KERNEL_DIR"/out/drivers -type f -iname '*.ko' -exec cp {} AnyKernel3/modules/system/lib/modules/ \;
-	find "$KERNEL_DIR" -type -f -name'usbip*.tar.gz'  -exec cp {} AnyKernel3/ \;
+#	find "$KERNEL_DIR" -type -f -name'usbip*.tar.gz'  -exec cp {} AnyKernel3/ \;
 		
 #	mv "$KERNEL_DIR"/out/certs/signing_key.pem AnyKernel3/signing_key.pem
 #	mv "$KERNEL_DIR"/out/certs/verity.x509.pem AnyKernel3/verity.x509.pem
