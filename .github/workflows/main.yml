@@ -1,4 +1,4 @@
-name: pyxis kernel builder linaro
+name: pyxis kernel builder testing
 
 on:
   push:
