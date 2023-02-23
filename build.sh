@@ -424,11 +424,10 @@ build_kernel() {
 #			cd "$KERNEL_DIR"/tools/usb/usbip; bash autogen.sh; bash configure; make V=1 \
 #			CROSS_COMPILE=aarch64-linux-gnu- \
 #			CROSS_COMPILE_ARM32=arm-linux-gnueabi-
-
+#
 #			zip -r9 "$KERNEL_DIR"/AnyKernel3/usbip.zip * 
-
-				
-				gen_zip
+			gen_zip
+			
 			else
 			if [ "$PTTG" = 1 ]
  			then
@@ -442,10 +441,10 @@ build_kernel() {
 
 gen_zip() {
 	msg "|| Zipping into a flashable zip ||"
-	mv "$KERNEL_DIR"/out/arch/arm64/boot/Image.gz-dtb AnyKernel3/Image.gz-dtb
-	mv "$KERNEL_DIR"/out/arch/arm64/boot/dts/qcom/sdm710.dtb AnyKernel3/sdm710.dtb
-	mv "$KERNEL_DIR"/out/arch/arm64/boot/dts/qcom/pyxis-sdm710-overlay.dtbo AnyKernel3/pyxis-sdm710-overlay.dtbo
-	mv "$KERNEL_DIR"/out/arch/arm64/boot/Image.gz AnyKernel3/Image.gz
+#	mv "$KERNEL_DIR"/out/arch/arm64/boot/Image.gz-dtb AnyKernel3/Image.gz-dtb
+#	mv "$KERNEL_DIR"/out/arch/arm64/boot/dts/qcom/sdm710.dtb AnyKernel3/sdm710.dtb
+#	mv "$KERNEL_DIR"/out/arch/arm64/boot/dts/qcom/pyxis-sdm710-overlay.dtbo AnyKernel3/pyxis-sdm710-overlay.dtbo
+	cp "$KERNEL_DIR"/out/arch/arm64/boot/Image.gz AnyKernel3/Image.gz
 	find "$KERNEL_DIR"/out/extra_tools/drivers -type f -iname '*.ko' -exec cp {} AnyKernel3/modules/system/lib/modules/ \;
 	find "$KERNEL_DIR"/out/drivers -type f -iname '*.ko' -exec cp {} AnyKernel3/modules/system/lib/modules/ \;
 #	find "$KERNEL_DIR" -type -f -name'usbip*.tar.gz'  -exec cp {} AnyKernel3/ \;
@@ -486,7 +485,7 @@ gen_zip() {
 		mv "$KERNEL_DIR"/out/arch/arm64/boot/dtbo.img AnyKernel3/dtbo.img
 	fi
 
-	cd "$KERNEL_DIR"/AnyKernel3 
+	cd AnyKernel3 
 
 # || exit
 #        cp -af anykernel-real.sh anykernel.sh
@@ -500,7 +499,7 @@ gen_zip() {
 #	sed -i "s/build.date=.*/build.date=$DATE2/g" anykernel.sh
 
 
-	zip -r9 "$ZIPNAME" * -x .git README.md .git .gitignore zipsigner* *.zip
+	zip -r9 "$ZIPNAME" * -x README.md zipsigner* *.zip
 
 	## Prepare a final zip variable
 	ZIP_FINAL="$ZIPNAME"
