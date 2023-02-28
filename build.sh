@@ -535,7 +535,7 @@ gen_zip() {
 
         #$BUILD_TYPE #$JENIS #$VARIAN"
 
-	cd ..
+#	cd ..
 }
 
 setversioning
