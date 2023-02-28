@@ -38,7 +38,7 @@ BUILD_TYPE="nh"
 
 # Specify compiler.
 # 'clang' or 'clangxgcc' or 'gcc' or 'gcc49' , 'linaro & 'gcc2', clang2
-COMPILER=linaro
+COMPILER=clang
 
 # Message on anykernel when installatio
 MESSAGE="just flash and forget"
