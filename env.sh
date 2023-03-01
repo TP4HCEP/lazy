@@ -1,10 +1,10 @@
 #! /bin/bash
 
 # Kernel Repo
-KERNEL_REPO=https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/TP4HCEP/RevengeOS
+KERNEL_REPO=https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/TP4HCEP/tkilla
 
 # Kernel Branch
-KERNEL_BRANCH=pyxis
+KERNEL_BRANCH=test
 
 # The name of the device for which the kernel is built
 MODEL="pyxis"
@@ -40,7 +40,7 @@ BUILD_TYPE="nh"
 
 # Specify compiler.
 # 'clang' or 'clangxgcc' or 'gcc' or 'gcc49' , 'linaro & 'gcc2', clang2
-COMPILER="linaro"
+COMPILER="clang"
 
 # Message on anykernel when installatio
 MESSAGE="just flash and forget"
