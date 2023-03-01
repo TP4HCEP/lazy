@@ -4,7 +4,7 @@
 KERNEL_REPO=https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/TP4HCEP/tkilla
 
 # Kernel Branch
-KERNEL_BRANCH=test
+KERNEL_BRANCH=lineage-19.1
 
 # The name of the device for which the kernel is built
 MODEL="pyxis"
