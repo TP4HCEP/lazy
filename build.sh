@@ -150,13 +150,13 @@ DATE2=$(TZ=Asia/Jakarta date +"%Y%m%d")
 	
 	elif [ $COMPILER = "gcc3" ]
 	then
-		msger -n "|| Cloning GCC 9.3.0 baremetal ||"
+		msg -n "|| Cloning GCC 9.3.0 baremetal ||"
 		git clone --depth=1 https://github.com/mvaisakh/gcc-arm64.git gcc64
 		git clone --depth=1 https://github.com/arter97/arm32-gcc.git gcc32
 	
 	elif [ $COMPILER = "clang16" ]
 	then
-		msger -n "|| Cloning Clang-16||"
+		msg -n "|| Cloning Clang-16||"
 		git clone --depth=1 https://gitlab.com/Panchajanya1999/azure-clang.git clang
 		
 		# Toolchain Directory defaults to clang-llvm
@@ -170,7 +170,7 @@ DATE2=$(TZ=Asia/Jakarta date +"%Y%m%d")
 		GCC64_DIR=$KERNEL_DIR/gcc64
 		GCC32_DIR=$KERNEL_DIR/gcc32
 		fi
-		
+
 	    if [ $HMP = "y" ]
 	    then
 	       msg "|| Cloning Anykerne For HMP ||"
