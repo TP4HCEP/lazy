@@ -450,7 +450,6 @@ build_kernel() {
 			LD=aarch64-elf-ld.lld	 \
 			"${MAKE[@]}" 2>&1 | tee build.log
 	fi
-
 	if [ $MODULES = "1" ]
 	then
 	    msger -n "|| Started Compiling Modules ||"
