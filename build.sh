@@ -426,7 +426,7 @@ build_kernel() {
 				     "${MAKE[@]}" 2>&1 | tee build.log
 	elif [ $COMPILER = "clang16" ]
 	then
-		MAKE+=(
+		make -j"$PROCS"  O=out \
 			CROSS_COMPILE=aarch64-linux-gnu- \
 			CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
 			CC=clang \
@@ -435,11 +435,11 @@ build_kernel() {
 			STRIP=llvm-strip \
 			NM=llvm-nm \
 			OBJCOPY=llvm-objcopy \
-			LD="$LINKER"
-		)
+			LD="ld.lld"  \
+			"${MAKE[@]}" 2>&1 | tee build.log
 	elif [ $COMPILER = "gcc3" ]
 	then
-		MAKE+=(
+		make -j"$PROCS"  O=out \
 			CROSS_COMPILE_ARM32=arm-eabi- \
 			CROSS_COMPILE=aarch64-elf- \
 			AR=aarch64-elf-ar \
@@ -447,8 +447,8 @@ build_kernel() {
 			STRIP=aarch64-elf-strip \
 			NM=aarch64-elf-nm \
 			OBJCOPY=aarch64-elf-objcopy \
-			LD=aarch64-elf-$LINKER
-		)
+			LD=aarch64-elf-ld.lld	 \
+			"${MAKE[@]}" 2>&1 | tee build.log
 	fi
 
 	if [ $MODULES = "1" ]
