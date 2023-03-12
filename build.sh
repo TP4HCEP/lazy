@@ -36,6 +36,9 @@ CPU_MODEL=$(lscpu | grep 'Model name' | cut -f 2 -d ":" | awk '{$1=$1}1')
 # Kernel is LTO
 LTO=0
 
+MODULES=1
+
+
 # Specify linker.
 # 'ld.lld'(default)
 LINKER=ld.lld
@@ -157,11 +160,12 @@ DATE2=$(TZ=Asia/Jakarta date +"%Y%m%d")
 	elif [ $COMPILER = "clang16" ]
 	then
 		msg -n "|| Cloning Clang-16||"
-		git clone --depth=1 https://gitlab.com/Panchajanya1999/azure-clang.git clang
+		git clone --depth=1 https://gitlab.com/Panchajanya1999/azure-clang.git clang-llvm
 		
 		# Toolchain Directory defaults to clang-llvm
-		# TC_DIR=$KERNEL_DIR/clang-llvm
-	
+		TC_DIR=$KERNEL_DIR/clang-llvm
+	fi
+
 
 		# Toolchain Directory defaults to clang-llvm
 		TC_DIR=$KERNEL_DIR/clang
@@ -169,7 +173,6 @@ DATE2=$(TZ=Asia/Jakarta date +"%Y%m%d")
 		# GCC Directory
 		GCC64_DIR=$KERNEL_DIR/gcc64
 		GCC32_DIR=$KERNEL_DIR/gcc32
-		fi
 
 	    if [ $HMP = "y" ]
 	    then
@@ -450,9 +453,10 @@ build_kernel() {
 			LD=aarch64-elf-ld.lld	 \
 			"${MAKE[@]}" 2>&1 | tee build.log
 	fi
+
 	if [ $MODULES = "1" ]
 	then
-	    msger -n "|| Started Compiling Modules ||"
+	    msg -n "|| Started Compiling Modules ||"
 	    make -j"$PROCS" O=out \
 		 "${MAKE[@]}" modules_prepare
 	    make -j"$PROCS" O=out \
