@@ -145,7 +145,6 @@ DATE2=$(TZ=Asia/Jakarta date +"%Y%m%d")
 
 	elif [ $COMPILER = "gcc2" ]
 	then
-
 		msg "|| Cloning GCC 64  ||"
 		git clone --depth=1 https://github.com/Thoreck-project/aarch64-linux-gnu -b gcc8-201903-A gcc64
 		msg "|| Cloning GCC 32  ||"
@@ -156,7 +155,6 @@ DATE2=$(TZ=Asia/Jakarta date +"%Y%m%d")
 		msg -n "|| Cloning GCC 9.3.0 baremetal ||"
 		git clone --depth=1 https://github.com/mvaisakh/gcc-arm64.git gcc64
 		git clone --depth=1 https://github.com/arter97/arm32-gcc.git gcc32
-	
 	elif [ $COMPILER = "clang16" ]
 	then
 		msg -n "|| Cloning Clang-16||"
@@ -165,14 +163,6 @@ DATE2=$(TZ=Asia/Jakarta date +"%Y%m%d")
 		# Toolchain Directory defaults to clang-llvm
 		TC_DIR=$KERNEL_DIR/clang-llvm
 	fi
-
-
-		# Toolchain Directory defaults to clang-llvm
-		TC_DIR=$KERNEL_DIR/clang
-
-		# GCC Directory
-		GCC64_DIR=$KERNEL_DIR/gcc64
-		GCC32_DIR=$KERNEL_DIR/gcc32
 
 	    if [ $HMP = "y" ]
 	    then
@@ -207,8 +197,8 @@ setversioning() {
 
 exports() {
 	export KBUILD_BUILD_USER=$K_USER
-    	export KBUILD_BUILD_HOST=$K_HOST
-    	export KBUILD_BUILD_VERSION=$K_VERSION
+    export KBUILD_BUILD_HOST=$K_HOST
+    export KBUILD_BUILD_VERSION=$K_VERSION
 	export ARCH=$K_ARCH
 	export SUBARCH=$K_SUBARCH
 
