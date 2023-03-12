@@ -33,14 +33,14 @@ NAMA=RevengeOS
 
 JENIS=dtbo
 
-VARIAN=linaro
+VARIAN=clang16
 
 # Build Type
 BUILD_TYPE="nh"
 
 # Specify compiler.
 # 'clang' or 'clangxgcc' or 'gcc' or 'gcc49' , 'linaro & 'gcc2', clang2
-COMPILER="linaro"
+COMPILER="clang16"
 
 # Message on anykernel when installatio
 MESSAGE="just flash and forget"

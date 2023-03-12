@@ -185,7 +185,6 @@ DATE2=$(TZ=Asia/Jakarta date +"%Y%m%d")
 		msg "|| Cloning libufdt ||"
 		git clone https://android.googlesource.com/platform/system/libufdt "$KERNEL_DIR"/scripts/ufdt/libufdt
 	fi
-
 }
 
 ##----------------------------------------------------------##
