@@ -14,7 +14,8 @@ DEVICE="pyxis"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=pyx_lastgood_defconfig
+DEFCONFIG=pyxi_defconfig
+#pyx_lastgood_defconfig
 
 # Show manufacturer info
 MANUFACTURERINFO="Xiaomi"
