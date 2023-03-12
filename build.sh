@@ -161,15 +161,16 @@ DATE2=$(TZ=Asia/Jakarta date +"%Y%m%d")
 		
 		# Toolchain Directory defaults to clang-llvm
 		# TC_DIR=$KERNEL_DIR/clang-llvm
-	fi
+	
 
-	# Toolchain Directory defaults to clang-llvm
+		# Toolchain Directory defaults to clang-llvm
 		TC_DIR=$KERNEL_DIR/clang
 
-	# GCC Directory
+		# GCC Directory
 		GCC64_DIR=$KERNEL_DIR/gcc64
 		GCC32_DIR=$KERNEL_DIR/gcc32
-	fi
+		fi
+		
 	    if [ $HMP = "y" ]
 	    then
 	       msg "|| Cloning Anykerne For HMP ||"
