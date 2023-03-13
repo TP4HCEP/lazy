@@ -40,6 +40,27 @@ cdir()
 	cd "$1" 2>/dev/null || msger -e "The directory $1 doesn't exists !"
 }
 
+
+##------------------------------------------------------##
+##----------Basic Informations, COMPULSORY--------------##
+
+
+# Kernel Repo
+KERNEL_REPO=https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/TP4HCEP/RevengeOS
+
+# Kernel Branch
+KERNEL_BRANCH=pyxis
+
+# The name of the device for which the kernel is built
+MODEL="pyxis"
+
+# The codename of the device
+DEVICE="pyxis"
+
+
+
+
+
 ##------------------------------------------------------##
 ##----------Basic Informations, COMPULSORY--------------##
 
@@ -48,38 +69,38 @@ KERNEL_DIR="$(pwd)"
 BASEDIR="$(basename "$KERNEL_DIR")"
 
 # The name of the Kernel, to name the ZIP
-ZIPNAME="azure"
+ZIPNAME="pyxis"
 
 # Build Author
 # Take care, it should be a universal and most probably, case-sensitive
-AUTHOR="Panchajanya1999"
+AUTHOR="TP4HCEP"
 
 # Architecture
 ARCH=arm64
 
 # The name of the device for which the kernel is built
-MODEL="Redmi Note 7 Pro"
+MODEL="pyxis"
 
 # The codename of the device
-DEVICE="violet"
+DEVICE="pyxis"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=vendor/violet-perf_defconfig
+DEFCONFIG=vendor/pyxis_defconfig
 
 # Specify compiler. 
 # 'clang' or 'gcc'
 COMPILER=clang
 
 # Build modules. 0 = NO | 1 = YES
-MODULES=0
+MODULES=1
 
 # Specify linker.
 # 'ld.lld'(default)
 LINKER=ld.lld
 
 # Clean source prior building. 1 is NO(default) | 0 is YES
-INCREMENTAL=1
+INCREMENTAL=0
 
 # Push ZIP to Telegram. 1 is YES | 0 is NO(default)
 PTTG=1
@@ -102,13 +123,13 @@ if [ $BUILD_DTBO = 1 ]
 then 
 	# Set this to your dtbo path. 
 	# Defaults in folder out/arch/arm64/boot/dts
-	DTBO_PATH="xiaomi/violet-sm6150-overlay.dtbo"
+	DTBO_PATH="xiaomi/pyxis-sdm710-overlay.dtbo"
 fi
 
 # Sign the zipfile
 # 1 is YES | 0 is NO
-SIGN=1
-if [ $SIGN = 1 ]
+SIGN=0
+if [ $SIGN = 0 ]
 then
 	#Check for java
 	if ! hash java 2>/dev/null 2>&1; then
@@ -125,7 +146,7 @@ SILENCE=0
 
 # Verbose build
 # 0 is Quiet(default)) | 1 is verbose | 2 gives reason for rebuilding targets
-VERBOSE=0
+VERBOSE=1
 
 # Debug purpose. Send logs on every successfull builds
 # 1 is YES | 0 is NO(default)
@@ -375,8 +396,7 @@ gen_zip()
 	ZIP_FINAL="$ZIPNAME-$DEVICE-$DATE"
 
 	if [ $SIGN = 1 ]
-	then
-		## Sign the zip before sending it to telegram
+0000000000422d0f         test       rax, raxfore sending it to telegram
 		if [ "$PTTG" = 1 ]
  		then
  			msger -n "|| Signing Zip ||"
