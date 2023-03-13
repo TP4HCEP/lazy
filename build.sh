@@ -156,6 +156,9 @@ DATE2=$(TZ=Asia/Jakarta date +"%Y%m%d")
 		git clone --depth=1 https://github.com/mvaisakh/gcc-arm64.git $KERNEL_DIR/gcc64
 		git clone --depth=1 https://github.com/mvaisakh/gcc-arm $KERNEL_DIR/gcc32
 		# https://github.com/arter97/arm32-gcc.git gcc32
+	GCC64_DIR=$KERNEL_DIR/gcc64
+	GCC32_DIR=$KERNEL_DIR/gcc32
+
 	elif [ $COMPILER = "clang16" ]
 	then
 		msg -n "|| Cloning Clang-16||"
