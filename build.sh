@@ -36,7 +36,7 @@ CPU_MODEL=$(lscpu | grep 'Model name' | cut -f 2 -d ":" | awk '{$1=$1}1')
 # Kernel is LTO
 LTO=0
 
-MODULES=1
+MODULES=0
 
 
 # Specify linker.
