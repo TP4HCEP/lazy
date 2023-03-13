@@ -162,11 +162,17 @@ DATE2=$(TZ=Asia/Jakarta date +"%Y%m%d")
 	elif [ $COMPILER = "clang16" ]
 	then
 		msg -n "|| Cloning Clang-16||"
-		git clone --depth=1 https://gitlab.com/Panchajanya1999/azure-clang.git $KERNEL_DIR/clang-llvm
+		git clone --depth=1 https://gitlab.com/Panchajanya1999/azure-clang.git $KERNEL_DIR/clang
 		
 		# Toolchain Directory defaults to clang-llvm
-		TC_DIR=$KERNEL_DIR/clang-llvm
+		TC_DIR=$KERNEL_DIR/clang
 	fi
+	# Toolchain Directory defaults to clang-llvm
+export TC_DIR=$KERNEL_DIR/clang
+
+	# GCC Directory
+export GCC64_DIR=$KERNEL_DIR/gcc64
+export GCC32_DIR=$KERNEL_DIR/gcc32
 
 	    if [ $HMP = "y" ]
 	    then
