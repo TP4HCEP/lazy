@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # Kernel Repo
-KERNEL_REPO=https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/TP4HCEP/RevengeOS
+KERNEL_REPO=https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/TP4HCEP/los-devs
 
 # Kernel Branch
 KERNEL_BRANCH=pyxis
@@ -14,7 +14,8 @@ DEVICE="pyxis"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=pyx_lastgood_defconfig
+DEFCONFIG=sdm670_defconfig
+#pyx_lastgood_defconfig
 #pyxi_defconfig
 #pyx_lastgood_defconfig
 
@@ -41,8 +42,8 @@ VARIAN=clang16
 BUILD_TYPE="nh"
 
 # Specify compiler.
-# 'clang' or 'clangxgcc' or 'gcc' or 'gcc49' , 'linaro & 'gcc2', clang2
-COMPILER=clang16
+# 'clang' or 'clangxgcc' or 'gcc' or 'gcc49' , ' & 'gcc2', clang2
+COMPILER=linaro
 
 # Message on anykernel when installatio
 MESSAGE="just flash and forget"
