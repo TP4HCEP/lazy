@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # Kernel Repo
-KERNEL_REPO=https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/TP4HCEP/RevengeOS
+KERNEL_REPO=https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/TP4HCEP/los-devs
 
 # Kernel Branch
 KERNEL_BRANCH=pyxis
@@ -14,8 +14,7 @@ DEVICE="pyxis"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=pyx_lastgood_defconfig
-
+DEFCONFIG=sdm670_defconfig
 # Show manufacturer info
 MANUFACTURERINFO="Xiaomi"
 
