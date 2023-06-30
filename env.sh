@@ -1,10 +1,10 @@
 # !/bin/bash
 
 # Kernel Repo
-KERNEL_REPO=https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/TP4HCEP/los
+KERNEL_REPO=https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/TP4HCEP/los-devs
 
 # Kernel Branch
-KERNEL_BRANCH=19
+KERNEL_BRANCH=ineage-20
 
 # The name of the device for which the kernel is built
 MODEL="pyxis"
@@ -14,7 +14,8 @@ DEVICE="pyxis"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=pyxis_defconfig
+DEFCONFIG=sdm670_defconfig
+#pyxis_defconfig
 
 # Show manufacturer info
 MANUFACTURERINFO="Xiaomi"
@@ -41,7 +42,7 @@ BUILD_TYPE="nh"
 # Specify compiler.
 # 'clang' or 'clangxgcc' or 'gcc' or 'gcc49' , 'linaro & 'gcc2', clang2
 #COMPILER="${{ matrix.compiler.cc }}"
-
+COMPILER="linaro"
 # Message on anykernel when installatio
 MESSAGE="just flash and forget"
 
