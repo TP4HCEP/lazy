@@ -7,14 +7,14 @@ KERNEL_REPO=https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/TP4HCEP/Reveng
 KERNEL_BRANCH=r11.0
 
 # The name of the device for which the kernel is built
-MODEL="pyxis"
+MODEL="garnet"
 
 # The codename of the device
-DEVICE="pyxis"
+DEVICE="garnet"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=pyxis_defconfig
+DEFCONFIG=garnet_defconfig
 
 # Show manufacturer info
 MANUFACTURERINFO="Xiaomi"
